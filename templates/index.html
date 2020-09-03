@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home</title>
+</head>
+<body>
+  <h1>Flask oauth with discord</h1>
+  {% if is_logged_in %}
+    <h2>User info:</h2>
+    <ul>
+      {% for key, value in user.items() %}
+        <li> {{ key }}: {{value}} </li>
+      {% endfor %}
+    </ul>
+    <h2>Guilds:</h2>
+    <ol>
+    {% for guild in guilds %}
+      <li>
+        <ul>
+          {% for key, value in guild.items() %}
+            <li>{{ key }}: {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+    </ol>
+    <h2>Connections:</h2>
+    {% for connection in connections %}
+      <li>
+        <ul>
+          {% for key, value in connection.items() %}
+            <li>{{ key }}: {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  {% else %}
+    <p> Not logged in </p>
+  {% endif %}
+  <a href='/login'> login </a>
+  <a href='/logout'> logout </a>
+</body>
+</html>
